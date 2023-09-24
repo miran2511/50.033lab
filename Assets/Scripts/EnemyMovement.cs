@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     private float originalX;
     private float maxOffset = 10.0f;
-    private float enemyPatroltime = 2.0f;
+    private float enemyPatroltime = 1.5f;
     private int moveRight = -1;
     private Vector2 velocity;
 
