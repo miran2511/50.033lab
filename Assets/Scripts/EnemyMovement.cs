@@ -9,9 +9,10 @@ public class EnemyMovement : MonoBehaviour
     private float enemyPatroltime = 1.5f;
     private int moveRight = -1;
     private Vector2 velocity;
-
     private Rigidbody2D enemyBody;
     public Vector3 startPosition = new Vector3(0.0f, 0.0f, 0.0f);
+    [System.NonSerialized]
+    public bool alive = true;
 
     void Start()
     {
@@ -45,8 +46,40 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    public Sprite sploot;
+    public Sprite originalSprite;
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.name);
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (other.transform.DotTest(transform, Vector2.down))
+            {
+                GetComponent<BoxCollider2D>().enabled = false;
+                GetComponent<EnemyMovement>().enabled = false;
+                spriteRenderer.sprite = sploot;
+                gameObject.SetActive(false);
+                alive = false;
+            }
+        }
     }
+
+    public void GameRestart()
+    {
+        if (!alive)
+        {
+            GetComponent<BoxCollider2D>().enabled = true;
+            GetComponent<EnemyMovement>().enabled = true;
+            gameObject.SetActive(true);
+            GetComponent<SpriteRenderer>().sprite = originalSprite;
+            alive = true;
+        }
+        transform.localPosition = startPosition;
+        originalX = transform.position.x;
+        moveRight = -1;
+        ComputeVelocity();
+    }
+
 }

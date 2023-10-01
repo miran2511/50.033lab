@@ -12,6 +12,7 @@ public class BlockHit : MonoBehaviour
     public Animator blockAnimator;
     public bool question;
     public int itemNo = 1;
+    public GameManager gameManager;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!animating && collision.gameObject.CompareTag("Player"))
@@ -33,6 +34,7 @@ public class BlockHit : MonoBehaviour
         {
             Instantiate(item, transform.position, Quaternion.identity);
             itemNo--;
+            gameManager.IncreaseScore(1);
         }
 
         if (maxHits == 0)

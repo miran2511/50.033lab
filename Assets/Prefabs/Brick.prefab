@@ -146,3 +146,7 @@ MonoBehaviour:
   maxHits: -1
   emptyBlock: {fileID: 0}
   item: {fileID: 0}
+  blockAnimator: {fileID: 0}
+  question: 0
+  itemNo: 1
+  gameManager: {fileID: 0}
