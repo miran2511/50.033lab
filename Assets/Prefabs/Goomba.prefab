@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3763555781122745316}
   - component: {fileID: 8847550412995132369}
   - component: {fileID: 4207032086223470524}
+  - component: {fileID: 7317899947633021096}
   m_Layer: 6
   m_Name: Goomba
   m_TagString: Enemy
@@ -159,7 +160,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8847550412995132369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +174,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 0, z: 0}
-  sploot: {fileID: 21300004, guid: 7eb68ac47e5fe4bbca37c767951ce034, type: 3}
+  goombaDeath: {fileID: 4207032086223470524}
+  goombaAnimator: {fileID: 7317899947633021096}
+  gameConstants: {fileID: 11400000, guid: b77d2c3e57ec7b74b920802b5b790d41, type: 2}
   originalSprite: {fileID: 21300000, guid: 7eb68ac47e5fe4bbca37c767951ce034, type: 3}
 --- !u!82 &4207032086223470524
 AudioSource:
@@ -271,3 +274,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &7317899947633021096
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2889597115031675385}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa91b399e6c8eca4ca11bbab4342dd9f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -7,11 +7,8 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 10;
     private Rigidbody2D marioBody;
-    public float upSpeed = 10;
     private bool onGroundState = true;
-    public float maxSpeed = 20;
     // global variables
     private SpriteRenderer marioSprite;
     private bool faceRightState = true;
@@ -23,20 +20,36 @@ public class PlayerMovement : MonoBehaviour
     public bool alive = true;
     private bool moving = false;
     private bool jumpedState = false;
-    public float deathImpulse;
     public Transform gameCamera;
-    public GameManager gameManager;
+    private Vector3 initialCameraPos;
+    public GameConstants gameConstants;
+    float deathImpulse;
+    float upSpeed;
+    float maxSpeed;
+    float speed;
 
+    void Awake()
+    {
+        // other instructions
+        // subscribe to Game Restart event
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        //Set constants
+        speed = gameConstants.speed;
+        maxSpeed = gameConstants.maxSpeed;
+        deathImpulse = gameConstants.deathImpulse;
+        upSpeed = gameConstants.upSpeed;
         marioSprite = GetComponent<SpriteRenderer>();
         // Set to be 30 FPS
         Application.targetFrameRate = 30;
         marioBody = GetComponent<Rigidbody2D>();
         // update animator state
         marioAnimator.SetBool("onGround", onGroundState);
+        initialCameraPos = gameCamera.position;
     }
 
     // Update is called once per frame
@@ -87,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         // stop time
         Time.timeScale = 0.0f;
         // game over scene
-        gameManager.GameOver();
+        GameManager.instance.GameOver();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -96,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (other.transform.DotTest(transform, Vector2.up))
             {
-                gameManager.IncreaseScore(1);
+                GameManager.instance.IncreaseScore(1);
             }
             else
             {
@@ -159,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
         marioAnimator.SetTrigger("gameRestart");
         alive = true;
         // reset camera position
-        gameCamera.position = new Vector3(15.03f, 7.55f, -10);
+        gameCamera.position = initialCameraPos;
     }
 
     // for audio

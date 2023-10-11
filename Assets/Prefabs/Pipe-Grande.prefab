@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 834070479686152557}
   m_Layer: 7
   m_Name: Pipe-Grande
-  m_TagString: Obstacle
+  m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

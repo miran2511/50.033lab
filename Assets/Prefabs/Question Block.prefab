@@ -145,9 +145,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHits: 1
-  initialMaxHits: 1
   emptyBlock: {fileID: 21300060, guid: 82bc45c4496284f4c823d1b837f65ec4, type: 3}
-  item: {fileID: 8888145126644103995, guid: e44e5dbc2f5041c48b22ab98aee056d4, type: 3}
+  originalQuestion: {fileID: 21300160, guid: 82bc45c4496284f4c823d1b837f65ec4, type: 3}
+  item: {fileID: 0}
   blockAnimator: {fileID: 0}
   question: 1
   itemNo: 1

@@ -5,17 +5,23 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private float originalX;
-    private float maxOffset = 10.0f;
-    private float enemyPatroltime = 1.5f;
     private int moveRight = -1;
     private Vector2 velocity;
     private Rigidbody2D enemyBody;
     public Vector3 startPosition = new Vector3(0.0f, 0.0f, 0.0f);
     [System.NonSerialized]
     public bool alive = true;
+    public AudioSource goombaDeath;
+    public Animator goombaAnimator;
+    public GameConstants gameConstants;
+    float maxOffset;
+    float enemyPatroltime;
 
     void Start()
     {
+        // set constant
+        maxOffset = gameConstants.goombaMaxOffset;
+        enemyPatroltime = gameConstants.goombaPatrolTime;
         enemyBody = GetComponent<Rigidbody2D>();
         // get the starting position
         originalX = transform.position.x;
@@ -23,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
     }
     void ComputeVelocity()
     {
-        velocity = new Vector2((moveRight) * maxOffset / enemyPatroltime, 0);
+        velocity = new Vector2(moveRight * maxOffset / enemyPatroltime, 0);
     }
     void Movegoomba()
     {
@@ -45,25 +51,28 @@ public class EnemyMovement : MonoBehaviour
             Movegoomba();
         }
     }
-
-    public Sprite sploot;
     public Sprite originalSprite;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-
         if (other.gameObject.CompareTag("Player"))
         {
             if (other.transform.DotTest(transform, Vector2.down))
             {
                 GetComponent<BoxCollider2D>().enabled = false;
                 GetComponent<EnemyMovement>().enabled = false;
-                spriteRenderer.sprite = sploot;
-                gameObject.SetActive(false);
+                // play death animation
+                goombaAnimator.Play("goomba-die");
+                // play dying sound haha
+                goombaDeath.PlayOneShot(goombaDeath.clip);
                 alive = false;
             }
         }
+    }
+
+    public void SetInactive()
+    {
+        gameObject.SetActive(false);
     }
 
     public void GameRestart()
