@@ -28,13 +28,6 @@ public class PlayerMovement : MonoBehaviour
     float maxSpeed;
     float speed;
 
-    void Awake()
-    {
-        // other instructions
-        // subscribe to Game Restart event
-        GameManager.instance.gameRestart.AddListener(GameRestart);
-    }
-
     // Start is called before the first frame update
     void Start()
     {

@@ -552,6 +552,7 @@ GameObject:
   m_Component:
   - component: {fileID: 159040374}
   - component: {fileID: 159040375}
+  - component: {fileID: 159040376}
   m_Layer: 6
   m_Name: Enemies
   m_TagString: Enemy
@@ -590,6 +591,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6480827408914c7418fba3da32162c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &159040376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159040373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 208c5be8dc327824baa187bce93e997f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 30ba745328ae8e244acc9c35712ad116, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 159040375}
+        m_TargetAssemblyTypeName: EnemyManager, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &206396064
 GameObject:
   m_ObjectHideFlags: 0
@@ -3366,6 +3395,7 @@ GameObject:
   - component: {fileID: 1204979767}
   - component: {fileID: 1204979769}
   - component: {fileID: 1204979770}
+  - component: {fileID: 1204979771}
   m_Layer: 0
   m_Name: Mario
   m_TagString: Player
@@ -3808,6 +3838,34 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: MoveCheck
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1204979771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204979759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 208c5be8dc327824baa187bce93e997f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 30ba745328ae8e244acc9c35712ad116, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1204979763}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4708,6 +4766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d7c0b9a8f606c4e8e135b11dec264f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 30ba745328ae8e244acc9c35712ad116, type: 2}
 --- !u!1 &1441645533
 GameObject:
   m_ObjectHideFlags: 0
@@ -5432,6 +5491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d7c0b9a8f606c4e8e135b11dec264f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 30ba745328ae8e244acc9c35712ad116, type: 2}
 --- !u!1 &1639294050
 GameObject:
   m_ObjectHideFlags: 0
